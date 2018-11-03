@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Daksh/blockchain101/issues"
   },
-  "homepage": "https://github.com/Daksh/blockchain101#readme"
+  "homepage": "https://github.com/Daksh/blockchain101#readme",
+  "dependencies": {
+    "openzeppelin-solidity": "^2.0.0"
+  }
 }

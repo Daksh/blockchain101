@@ -36,9 +36,9 @@ App = {
   },
 
   initContract: () => {
-    $.getJSON('Splitter.json', (splitterArtifact) => {
-      App.contracts.Splitter = TruffleContract(splitterArtifact);
-      App.contracts.Splitter.setProvider(App.web3Provider);
+    $.getJSON('SmartWallet.json', (SmartWalletArtifact) => {
+      App.contracts.SmartWallet = TruffleContract(SmartWalletArtifact);
+      App.contracts.SmartWallet.setProvider(App.web3Provider);
       App.eventListener();
       return App.getConfiguration();
     })
@@ -59,7 +59,7 @@ App = {
   },
 
   getConfiguration: async () => {
-    App.contracts.Splitter.deployed()
+    App.contracts.SmartWallet.deployed()
       .then((instance) => {
         return instance.getConfiguration({from : App.account, gas: 500000});
       })
@@ -100,7 +100,7 @@ App = {
   },
 
   isNotContractAddress: async (address) => {
-    let check = await App.contracts.Splitter.deployed()
+    let check = await App.contracts.SmartWallet.deployed()
       .then((instance) => {
         return instance.isContractAddress(address, {from : App.account, gas: 500000});
       })
@@ -169,7 +169,7 @@ App = {
 
     console.log(walletPercent);
     console.log(walletAddress);
-    App.contracts.Splitter.deployed()
+    App.contracts.SmartWallet.deployed()
       .then((instance) => {
         return instance.configureShare(num, walletPercent, walletAddress, {from : App.account, gas: 500000});
       });
@@ -177,7 +177,7 @@ App = {
   },
 
   eventListener: () => {
-    App.contracts.Splitter.deployed()
+    App.contracts.SmartWallet.deployed()
       .then((instance) => {
         instance.Deposit({}, {}).watch((err, events) => {
           if (!err) {

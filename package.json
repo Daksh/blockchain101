@@ -21,5 +21,8 @@
   "homepage": "https://github.com/Daksh/blockchain101#readme",
   "dependencies": {
     "openzeppelin-solidity": "^2.0.0"
+  },
+  "devDependencies": {
+    "lite-server": "^2.4.0"
   }
 }
